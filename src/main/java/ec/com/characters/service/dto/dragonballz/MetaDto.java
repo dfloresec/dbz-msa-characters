@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class MetaDto {
-	public int totalItems;
-	public int itemCount;
-	public int itemsPerPage;
-	public int totalPages;
-	public int currentPage;
+	private int totalItems;
+	private int itemCount;
+	private int itemsPerPage;
+	private int totalPages;
+	private int currentPage;
 }

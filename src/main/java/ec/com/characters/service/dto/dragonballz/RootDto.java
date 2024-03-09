@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 public class RootDto {
-	public ArrayList<ItemDto> items;
-	public MetaDto meta;
-	public LinksDto links;
+	private ArrayList<ItemDto> items;
+	private MetaDto meta;
+	private LinksDto links;
 }

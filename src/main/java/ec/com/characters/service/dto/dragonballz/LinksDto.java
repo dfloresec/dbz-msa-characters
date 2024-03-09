@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data
 public class LinksDto {
-	public String first;
-	public String previous;
-	public String next;
-	public String last;
+	private String first;
+	private String previous;
+	private String next;
+	private String last;
 }

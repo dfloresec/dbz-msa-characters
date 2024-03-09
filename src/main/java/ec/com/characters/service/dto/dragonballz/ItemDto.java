@@ -4,14 +4,14 @@ import lombok.Data;
 
 @Data
 public class ItemDto {
-	public int id;
-    public String name;
-    public String ki;
-    public String maxKi;
-    public String race;
-    public String gender;
-    public String description;
-    public String image;
-    public String affiliation;
-    public Object deletedAt;
+	private Integer id;
+	private String name;
+	private String ki;
+	private String maxKi;
+	private String race;
+	private String gender;
+	private String description;
+	private String image;
+	private String affiliation;
+	private Object deletedAt;
 }
