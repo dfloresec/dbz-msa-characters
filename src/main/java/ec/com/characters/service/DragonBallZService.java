@@ -12,8 +12,12 @@ public class DragonBallZService {
 
 	private final DragonBallZRepository dragonBallZRepository;
 
-	public RootDto findAll() {
-		return dragonBallZRepository.getCharacters();
+	public RootDto findAll(boolean online) {
+		if (online) {
+			return dragonBallZRepository.getCharactersOnline();
+		}
+		return dragonBallZRepository.getCharactersDB();
+
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import ec.com.characters.domain.CharacterEntity;
 import ec.com.characters.service.dto.dragonballz.ItemDto;
 import ec.com.characters.service.dto.response.GaleryResponseDto;
 import ec.com.characters.service.mapper.GaleryResponseMapper;
@@ -22,16 +23,15 @@ public class CharacterCircuitBreakerService {
 
 	public List<GaleryResponseDto> findAll() {
 		try {
-			List<ItemDto> listRest = dragonBallZService.findAll().getItems();
-
-			List<GaleryResponseDto> lista2 = listRest.stream()
-					.map(elemento -> GaleryResponseMapper.INSTANCE.toGaleryResponseDto(elemento))
+			log.info("Conexión al api de DragonBallZ exitosa.");
+			List<ItemDto> listRest = dragonBallZService.findAll(true).getItems();
+			return listRest.stream().map(elemento -> GaleryResponseMapper.INSTANCE.toGaleryResponseDto(elemento))
 					.collect(Collectors.toList());
-
-			return lista2;
 		} catch (Exception e) {
-			log.error("Error en el api de Dragon Ball Z");
-			return null;
+			log.error("Error con la conexión al api de DragonBallZ.");
+			List<CharacterEntity> listBD = characterService.findAll();
+			return listBD.stream().map(elemento -> GaleryResponseMapper.INSTANCE.toGaleryResponseDto(elemento))
+					.collect(Collectors.toList());
 		}
 	}
 

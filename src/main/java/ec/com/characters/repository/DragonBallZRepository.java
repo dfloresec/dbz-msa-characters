@@ -9,8 +9,8 @@ import feign.jackson.JacksonEncoder;
 
 @Repository
 public class DragonBallZRepository {
-
-	public RootDto getCharacters() {
+	
+	public RootDto getCharactersOnline() {
 		DragonBallZClient client = Feign.builder()
 				.encoder(new JacksonEncoder())
 				.decoder(new JacksonDecoder())
@@ -19,4 +19,13 @@ public class DragonBallZRepository {
 		return root;
 	}
 
+	public RootDto getCharactersDB() {
+		DragonBallZClient client = Feign.builder()
+				.encoder(new JacksonEncoder())
+				.decoder(new JacksonDecoder())
+				.target(DragonBallZClient.class, "https://dragonball-api.com");
+		RootDto root = client.getCharacters();
+		return root;
+	}
+	
 }

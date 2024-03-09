@@ -24,7 +24,7 @@ public class InicializationComponent implements InitializingBean {
 	@Override
 	public void afterPropertiesSet() {
 		log.info("Inicia carga");
-		List<ItemDto> list = dragonBallZService.findAll().getItems();
+		List<ItemDto> list = dragonBallZService.findAll(false).getItems();
 		characterService.saveAll(list);
 		log.info("Fin carga" + list.size());
 	}
