@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.com.characters.service.CharacterCircuitBreakerService;
+import ec.com.characters.service.dto.response.DetailResponseDto;
 import ec.com.characters.service.dto.response.GaleryResponseDto;
 import lombok.RequiredArgsConstructor;
 
@@ -26,8 +27,8 @@ public class CharactersController {
 
 	@GetMapping(value = "/characters/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	private List<GaleryResponseDto> getDetail(@PathVariable Integer id) {
-		return characterCircuitBreakerService.findAll();
+	private DetailResponseDto getDetail(@PathVariable(value = "id") Integer id) {
+		return characterCircuitBreakerService.findById(id);
 	}
 
 }

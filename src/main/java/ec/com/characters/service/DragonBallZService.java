@@ -3,6 +3,7 @@ package ec.com.characters.service;
 import org.springframework.stereotype.Service;
 
 import ec.com.characters.repository.DragonBallZRepository;
+import ec.com.characters.service.dto.dragonballz.DetailItemDto;
 import ec.com.characters.service.dto.dragonballz.RootDto;
 import lombok.RequiredArgsConstructor;
 
@@ -17,6 +18,10 @@ public class DragonBallZService {
 			return dragonBallZRepository.getCharactersOnline();
 		}
 		return dragonBallZRepository.getCharactersDB();
+	}
+
+	public DetailItemDto findOne(Integer id) {
+		return dragonBallZRepository.getCharacterOnline(id);
 
 	}
 

@@ -2,6 +2,7 @@ package ec.com.characters.repository;
 
 import org.springframework.stereotype.Repository;
 
+import ec.com.characters.service.dto.dragonballz.DetailItemDto;
 import ec.com.characters.service.dto.dragonballz.RootDto;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
@@ -26,6 +27,14 @@ public class DragonBallZRepository {
 				.target(DragonBallZClient.class, "https://dragonball-api.com");
 		RootDto root = client.getCharacters();
 		return root;
+	}
+	
+	public DetailItemDto getCharacterOnline(Integer id) {
+		DragonBallZDetailClient client = Feign.builder()
+				.encoder(new JacksonEncoder())
+				.decoder(new JacksonDecoder())
+				.target(DragonBallZDetailClient.class, "https://dragonball-api.com");
+		return client.getCharacter(String.valueOf(id));
 	}
 	
 }
