@@ -7,15 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemDto {
+public class DetailTransformationDto {
+
 	private Integer id;
 	private String name;
-	private String ki;
-	private String maxKi;
-	private String race;
-	private String gender;
-	private String description;
 	private String image;
-	private String affiliation;
+	private String ki;
 	private Object deletedAt;
+
 }
